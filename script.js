@@ -1,41 +1,64 @@
+let noScale = 1;
+
 function moveButton() {
-  const noBtn = document.getElementById("noBtn");
+  const button = document.getElementById("noBtn");
 
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 100);
+  // Shrink effect
+  noScale -= 0.1;
+  if (noScale > 0.3) {
+    button.style.transform = "scale(" + noScale + ")";
+  }
 
-  noBtn.style.position = "fixed";
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+  // Random move
+  const x = Math.random() * (window.innerWidth - button.offsetWidth);
+  const y = Math.random() * (window.innerHeight - button.offsetHeight);
+
+  button.style.position = "absolute";
+  button.style.left = x + "px";
+  button.style.top = y + "px";
 }
-
 
 function yesClick() {
-  document.body.innerHTML = `
-    <div style="
-      height:100vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      background:#ffe6f0;
-      font-family:Segoe UI;
-      ">
-      <h1 style="color:#ff2f68;">Yayyy!! ❤️🥰</h1>
-      <h2>Happy Valentine’s Day 💕</h2>
-    </div>
-  `;
+  createConfetti();
+  alert("YAYYYYY 💖💖💖 I LOVE YOUUUU 😍");
 }
-setInterval(() => {
+
+function createConfetti() {
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement("div");
+    confetti.classList.add("confetti");
+
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.backgroundColor =
+      "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+
+    document.body.appendChild(confetti);
+
+    setTimeout(() => {
+      confetti.remove();
+    }, 3000);
+  }
+}
+
+function createHeart() {
   const heart = document.createElement("div");
-  heart.innerHTML = "❤️";
-  heart.style.position = "fixed";
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.top = "100vh";
-  heart.style.fontSize = "24px";
-  heart.style.animation = "floatUp 4s linear";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+
   document.body.appendChild(heart);
 
-  setTimeout(() => heart.remove(), 4000);
-}, 500);
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
 
+setInterval(createHeart, 500);
+
+// Music start on first click
+document.addEventListener("click", function () {
+  document.getElementById("bgMusic").play();
+}, { once: true });
