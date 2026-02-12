@@ -8,6 +8,18 @@ body {
   font-family: "Segoe UI", sans-serif;
   overflow: hidden;
 }
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #ffe6f0;
+}
+
+.valentine-img {
+  width: 250px;
+  margin: 20px 0;
+}
+
+
 
 .container {
   text-align: center;
@@ -62,4 +74,5 @@ button:first-child {
     opacity: 0;
   }
 }
+
 
