@@ -1,7 +1,9 @@
 let noScale = 1;
 
+/* Move + Shrink No Button */
 function moveButton() {
   const button = document.getElementById("noBtn");
+  if (!button) return;
 
   noScale -= 0.1;
   if (noScale > 0.4) {
@@ -16,19 +18,20 @@ function moveButton() {
   button.style.top = y + "px";
 }
 
+/* Go to second page */
 function yesClick() {
   window.location.href = "second.html";
 }
 
-window.addEventListener("load", function() {
+/* Music start on first click */
+document.addEventListener("click", function () {
   const music = document.getElementById("bgMusic");
-  music.play().catch(() => {
-    console.log("Autoplay blocked by browser");
-  });
-});
+  if (music && music.paused) {
+    music.play();
+  }
+}, { once: true });
 
-
-/* Heart rain for both pages */
+/* Heart rain */
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
@@ -45,8 +48,8 @@ function createHeart() {
 }
 
 setInterval(createHeart, 300);
-/* ---------------- TYPING EFFECT ---------------- */
 
+/* Typing Effect (Second Page Only) */
 window.addEventListener("DOMContentLoaded", function () {
   const textElement = document.getElementById("typingText");
 
@@ -66,9 +69,7 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
-/* ---------------- SPARKLE BLAST ---------------- */
-
+/* Sparkle Blast */
 function createSparkle(x, y) {
   const sparkle = document.createElement("div");
   sparkle.classList.add("sparkle");
@@ -91,5 +92,3 @@ document.addEventListener("click", function (e) {
     );
   }
 });
-
-
