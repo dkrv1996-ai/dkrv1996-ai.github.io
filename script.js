@@ -3,13 +3,11 @@ let noScale = 1;
 function moveButton() {
   const button = document.getElementById("noBtn");
 
-  // Shrink effect
   noScale -= 0.1;
-  if (noScale > 0.3) {
+  if (noScale > 0.4) {
     button.style.transform = "scale(" + noScale + ")";
   }
 
-  // Random move
   const x = Math.random() * (window.innerWidth - button.offsetWidth);
   const y = Math.random() * (window.innerHeight - button.offsetHeight);
 
@@ -19,27 +17,10 @@ function moveButton() {
 }
 
 function yesClick() {
-  createConfetti();
-  alert("YAYYYYY 💖💖💖 I LOVE YOUUUU 😍");
+  window.location.href = "second.html";
 }
 
-function createConfetti() {
-  for (let i = 0; i < 100; i++) {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.backgroundColor =
-      "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-
-    document.body.appendChild(confetti);
-
-    setTimeout(() => {
-      confetti.remove();
-    }, 3000);
-  }
-}
-
+/* Heart rain for both pages */
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
@@ -47,18 +28,12 @@ function createHeart() {
 
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = Math.random() * 20 + 15 + "px";
-  heart.style.animationDuration = Math.random() * 3 + 3 + "s";
 
   document.body.appendChild(heart);
 
   setTimeout(() => {
     heart.remove();
-  }, 5000);
+  }, 4000);
 }
 
-setInterval(createHeart, 500);
-
-// Music start on first click
-document.addEventListener("click", function () {
-  document.getElementById("bgMusic").play();
-}, { once: true });
+setInterval(createHeart, 300);
