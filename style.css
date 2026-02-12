@@ -113,6 +113,22 @@ h2 {
     opacity: 0;
   }
 }
+.blast {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+  z-index: 999;
+}
+
+@keyframes explode {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
 
 
 
