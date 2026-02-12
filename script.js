@@ -20,6 +20,14 @@ function yesClick() {
   window.location.href = "second.html";
 }
 
+window.addEventListener("load", function() {
+  const music = document.getElementById("bgMusic");
+  music.play().catch(() => {
+    console.log("Autoplay blocked by browser");
+  });
+});
+
+
 /* Heart rain for both pages */
 function createHeart() {
   const heart = document.createElement("div");
@@ -37,3 +45,4 @@ function createHeart() {
 }
 
 setInterval(createHeart, 300);
+
