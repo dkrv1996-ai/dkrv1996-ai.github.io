@@ -45,4 +45,51 @@ function createHeart() {
 }
 
 setInterval(createHeart, 300);
+/* ---------------- TYPING EFFECT ---------------- */
+
+window.addEventListener("DOMContentLoaded", function () {
+  const textElement = document.getElementById("typingText");
+
+  if (textElement) {
+    const message = "I love you baccha 🥰💖";
+    let index = 0;
+
+    function typeEffect() {
+      if (index < message.length) {
+        textElement.innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeEffect, 70);
+      }
+    }
+
+    typeEffect();
+  }
+});
+
+
+/* ---------------- SPARKLE BLAST ---------------- */
+
+function createSparkle(x, y) {
+  const sparkle = document.createElement("div");
+  sparkle.classList.add("sparkle");
+
+  sparkle.style.left = x + "px";
+  sparkle.style.top = y + "px";
+
+  document.body.appendChild(sparkle);
+
+  setTimeout(() => {
+    sparkle.remove();
+  }, 800);
+}
+
+document.addEventListener("click", function (e) {
+  for (let i = 0; i < 15; i++) {
+    createSparkle(
+      e.clientX + (Math.random() - 0.5) * 40,
+      e.clientY + (Math.random() - 0.5) * 40
+    );
+  }
+});
+
 
