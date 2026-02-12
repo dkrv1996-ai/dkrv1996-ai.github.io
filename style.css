@@ -88,5 +88,31 @@ button:hover {
   opacity: 0.7;
 }
 
+h2 {
+  margin-top: 10px;
+  color: #ff2f68;
+  min-height: 30px;
+  font-size: 18px;
+}
+
+/* Sparkle */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: gold;
+  pointer-events: none;
+  animation: sparkleAnim 0.8s linear forwards;
+  z-index: 999;
+}
+
+@keyframes sparkleAnim {
+  to {
+    transform: translateY(-30px) scale(0);
+    opacity: 0;
+  }
+}
+
 
 
