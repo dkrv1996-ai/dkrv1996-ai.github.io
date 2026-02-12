@@ -92,3 +92,40 @@ document.addEventListener("click", function (e) {
     );
   }
 });
+/* ---------------- BLAST EFFECT ---------------- */
+
+function createBlast() {
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  for (let i = 0; i < 80; i++) {
+    const particle = document.createElement("div");
+    particle.classList.add("blast");
+
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = Math.random() * 250;
+
+    particle.style.left = centerX + "px";
+    particle.style.top = centerY + "px";
+
+    particle.style.setProperty("--x", Math.cos(angle) * distance + "px");
+    particle.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+    particle.style.backgroundColor =
+      "hsl(" + Math.random() * 360 + ", 100%, 60%)";
+
+    document.body.appendChild(particle);
+
+    setTimeout(() => {
+      particle.remove();
+    }, 1000);
+  }
+}
+
+/* Auto blast only on second page */
+window.addEventListener("load", function () {
+  if (window.location.pathname.includes("second.html")) {
+    setTimeout(createBlast, 300);
+  }
+});
+
