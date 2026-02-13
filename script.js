@@ -35,7 +35,7 @@ document.addEventListener("click", function () {
 function createHeart() {
   const heart = document.createElement("div");
   heart.classList.add("heart");
-  heart.innerHTML = "💖";
+  heart.innerHTML = "💖🥰💖";
 
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = Math.random() * 20 + 15 + "px";
@@ -54,7 +54,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const textElement = document.getElementById("typingText");
 
   if (textElement) {
-    const message = "I love you baccha 🥰💖";
+    const message = "I love you baby 🥰💖";
     let index = 0;
 
     function typeEffect() {
@@ -128,4 +128,5 @@ window.addEventListener("load", function () {
     setTimeout(createBlast, 300);
   }
 });
+
 
